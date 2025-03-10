@@ -1,0 +1,57 @@
+program: train.py
+command:
+  - ${interpreter}
+  - ${program}
+  - ${args_no_boolean_flags}
+method: grid
+metric:
+  name: max_accuracy_validation
+  goal: maximize
+parameters:
+  seed:
+    values: [ 30 ]
+  cuda:
+    values: [ true ]
+  cuda_id:
+    values: [ 0 ]
+  batch_size:
+    values: [ 128 ]
+  epoch:
+    values: [0]
+  max_epochs:
+    values: [ 20 ]
+  lr_decay:
+    values: [ true ] # false
+  backbone:
+    values: [ "alex", "vgg", "resnet"]
+  model:
+    values: ["rsscnn" ]
+  comparisons:
+    values: ["data/comparisons_berlin.pickle"] # ../comparisons_df.pickle
+  dataset:
+    values: ["/mnt/raid1/mncosta/berlin/"]
+  resume:
+    values: [false]
+  resume_realimages:
+    values: [ false ]
+  finetune:
+    values: [false]
+  model_dir:
+    values: ["models/"]
+  ties:
+    values: [ true ]
+  rank_w:
+    values: [ 1 ]
+  ties_w:
+    values: [ 1 ]
+  ranking_margin:
+    values: [ 1 ]
+  ranking_margin_ties:
+    values: [ 0 ]
+  log_console:
+    values: [ true ]
+  log_wandb:
+    values: [ true ]
+  full_accuracy:
+    values: [ true ]
+

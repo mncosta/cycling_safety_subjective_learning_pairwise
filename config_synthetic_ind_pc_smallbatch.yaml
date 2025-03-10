@@ -1,0 +1,95 @@
+program: train.py
+command:
+  - ${interpreter}
+  - ${program}
+  - ${args_no_boolean_flags}
+method: grid
+metric:
+  name: max_accuracy_validation
+  goal: maximize
+parameters:
+  seed:
+    values: [ 30 ]
+  cuda:
+    values: [ true ]
+  cuda_id:
+    values: [ 0 ]
+  batch_size:
+    values: [ 4 ]
+  epoch:
+    values: [0]
+  max_epochs:
+    values: [ 10 ]
+  lr_decay:
+    values: [ true ] # false
+  backbone:
+    values: [ "alex"]
+  model:
+    values: ["rsscnn" ]
+  comparisons:
+    values: ["data/comparisons_synthetic_ind5_pc20.00.p",
+             "data/comparisons_synthetic_ind5_pc1.49.p",
+             "data/comparisons_synthetic_ind5_pc2.00.p",
+             "data/comparisons_synthetic_ind5_pc3.00.p",
+             "data/comparisons_synthetic_ind5_pc5.00.p",
+             "data/comparisons_synthetic_ind5_pc8.00.p",
+             "data/comparisons_synthetic_ind5_pc12.00.p",
+             "data/comparisons_synthetic_ind5_pc15.00.p",
+             "data/comparisons_synthetic_ind10_pc1.50.p",
+             "data/comparisons_synthetic_ind10_pc2.00.p",
+             "data/comparisons_synthetic_ind10_pc3.01.p",
+             "data/comparisons_synthetic_ind10_pc5.00.p",
+             "data/comparisons_synthetic_ind10_pc8.00.p",
+             "data/comparisons_synthetic_ind10_pc12.00.p",
+             "data/comparisons_synthetic_ind20_pc1.50.p",
+             "data/comparisons_synthetic_ind20_pc2.00.p",
+             "data/comparisons_synthetic_ind20_pc3.00.p",
+             "data/comparisons_synthetic_ind20_pc5.01.p",
+             "data/comparisons_synthetic_ind20_pc8.01.p",
+             "data/comparisons_synthetic_ind50_pc1.51.p",
+             "data/comparisons_synthetic_ind50_pc1.99.p",
+             "data/comparisons_synthetic_ind50_pc3.00.p",
+             "data/comparisons_synthetic_ind100_pc1.51.p",
+             "data/comparisons_synthetic_ind100_pc2.01.p",
+             "data/comparisons_synthetic_ind100_pc3.01.p",
+             "data/comparisons_synthetic_ind250_pc1.49.p",
+             "data/comparisons_synthetic_ind250_pc2.00.p",
+             "data/comparisons_synthetic_ind500_pc1.50.p",
+             "data/comparisons_synthetic_ind500_pc2.01.p",
+             "data/comparisons_synthetic_ind1000_pc1.51.p",
+             "data/comparisons_synthetic_ind1000_pc2.01.p",
+             "data/comparisons_synthetic_ind1000_pc4.99.p",
+             "data/comparisons_synthetic_ind1000_pc20.08.p",
+             "data/comparisons_synthetic_ind1000_pc29.99.p",
+             "data/comparisons_synthetic_ind1500_pc1.51.p",
+             "data/comparisons_synthetic_ind1500_pc1.99.p",
+             "data/comparisons_synthetic_ind2500_pc1.51.p",
+             "data/comparisons_synthetic_ind5000_pc1.50.p",
+    ]
+  dataset:
+    values: ["/home/mncosta/data/images/"]
+  resume:
+    values: [false]
+  resume_realimages:
+    values: [ false ]
+  finetune:
+    values: [false]
+  model_dir:
+    values: ["models/"]
+  ties:
+    values: [ true ]
+  rank_w:
+    values: [ 1 ]
+  ties_w:
+    values: [ 1 ]
+  ranking_margin:
+    values: [ 1 ]
+  ranking_margin_ties:
+    values: [ 0 ]
+  log_console:
+    values: [ true ]
+  log_wandb:
+    values: [ true ]
+  full_accuracy:
+    values: [ true ]
+
